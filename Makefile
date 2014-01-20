@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=extendRoot
-PKG_VERSION:=0.8.0
+PKG_VERSION:=0.8.1
 PKG_RELEASE:=1
 
 
@@ -54,7 +54,7 @@ endef
 define Package/extendRoot-php
    $(call Package/extendRoot/Default)
    TITLE:=PHP on extendRoot
-   DEPENDS:=extendRoot +php5 +php5-cli +php5-cgi +php5-mod-gd +php5-mod-json +php5-mod-http +php5-mod-dom +php5-mod-pdo +php5-mod-pdo-sqlite +php5-mod-sqlite +php5-mod-sqlite3 +php5-mod-xml +php5-mod-xmlreader +php5-mod-xmlwriter +php5-mod-zip
+   DEPENDS:=extendRoot +php5 +php5-cli +php5-cgi +php5-mod-gd +php5-mod-json +php5-mod-http +php5-mod-dom +php5-mod-pdo +php5-mod-pdo-sqlite +php5-mod-sqlite +php5-mod-sqlite3 +php5-mod-xml +php5-mod-xmlreader +php5-mod-xmlwriter +php5-mod-zip +php5-mod-gettext php5-mod-openssl php5-mod-session  
 endef
 
 define Package/extendRoot-php-fastcgi
@@ -93,6 +93,11 @@ define Package/extendRoot-minidlna
         DEPENDS:=extendRoot +minidlna
 endef
 
+define Package/extendRoot-occupyhere
+        $(call Package/extendRoot/Default)
+        TITLE:=occupy.here packages and stuff
+        DEPENDS:=extendRoot +extendRoot-zoneinfo +extendRoot-lighttpd extendRoot-php extendRoot-php-fastcgi occupyhere
+endef
 
 define Package/extendRoot-avahi/description
 	not valid as a direct install on root.
@@ -151,6 +156,11 @@ endef
 define Package/extendRoot-minidlna/description
 	not valid as direct isntall on root
 	Installs minidlna to extend root and links needed folder
+endef
+
+define Package/extendRoot-occupyhere/description
+	not valid as direct install on root
+	Installs occupy.here collection to extendRoot
 endef
 
 define Package/extendRoot/postinst
@@ -229,6 +239,8 @@ define Package/extendRoot-php/postinst
 	sed  's,;extension=xml.so,extension=xml.so,g' -i /etc/php.ini
 	sed  's,;extension=xmlreader.so,extension=xmlreader.so,g' -i /etc/php.ini
 	sed  's,;extension=xmlwriter.so,extension=xmlwriter.so,g' -i /etc/php.ini
+        sed  's,;extension=gettext.so,extension=gettext.so,g' -i /etc/php.ini
+        sed  's,;extension=session.so,extension=session.so,g' -i /etc/php.ini
 endef
 
 define Package/extendRoot-php/prerm
@@ -361,4 +373,5 @@ $(eval $(call BuildPlugin,extendRoot-proftpd))
 $(eval $(call BuildPlugin,extendRoot-dbus))
 $(eval $(call BuildPlugin,extendRoot-avahi))
 $(eval $(call BuildPlugin,extendRoot-minidlna))
+$(eval $(call BuildPlugin,extendRoot-occupyhere))
 
