@@ -51,6 +51,13 @@ define Package/extendRoot-librarybox
    DEPENDS:=extendRoot +extendRoot-lighttpd +extendRoot-python +librarybox +extendRoot-php +extendRoot-zoneinfo +extendRoot-proftpd +extendRoot-avahi +extendRoot-dbus
 endef
 
+define Package/extendRoot-occupyhere
+        $(call Package/extendRoot/Default)
+        TITLE:=occupy.here packages and stuff
+        DEPENDS:=extendRoot +extendRoot-zoneinfo +extendRoot-lighttpd +extendRoot-php +extendRoot-php
+endef
+
+
 define Package/extendRoot-php
    $(call Package/extendRoot/Default)
    TITLE:=PHP on extendRoot
