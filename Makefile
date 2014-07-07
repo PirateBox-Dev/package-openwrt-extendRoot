@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=extendRoot
 PKG_VERSION:=0.10.1
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 
 
 include $(INCLUDE_DIR)/package.mk
@@ -42,7 +42,7 @@ endef
 define Package/extendRoot-piratebox
    $(call Package/extendRoot/Default)
    TITLE:=PirateBox on extendRoot
-   DEPENDS:=extendRoot +extendRoot-lighttpd +extendRoot-python +piratebox +extendRoot-avahi +extendRoot-dbus  +extendRoot-php +extendRoot-zoneinfo 
+   DEPENDS:=extendRoot +extendRoot-lighttpd +extendRoot-python +piratebox  +extendRoot-php +extendRoot-zoneinfo 
 endef
 
 define Package/extendRoot-librarybox
