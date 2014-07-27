@@ -215,7 +215,7 @@ ext_needextimg() {
       echo "       DO NOT overwrite the file!"
       echo " "
       echo " Do you want to reinitiate your USB and "
-      echo  -n " overwrite the file? ( y / n) "
+      echo  -n " overwrite the file? ( Y / n) "
       read answer
 
       if [ "$answer" = "n" ]  ; then
