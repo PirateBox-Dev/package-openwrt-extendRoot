@@ -313,3 +313,7 @@ pb_undoconfig() {
   sed "s|\. $EXT_PATH_TOOL| |" -i /etc/rc.common
   sed "s|\. $EXT_PATH_TOOL| |" -i /etc/profile
 }
+
+ext_is_ready(){
+     ext_ismounted $ext_mountpoint 
+}
